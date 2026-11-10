@@ -1,0 +1,42 @@
+# manifest.yml - 单应用部署（不需要 MBT / html5-apps-repo）
+#
+# 用法：
+#   1) 先建 destination 服务实例（凭据放在服务里，不写进任何代码/清单）：
+#        cf create-service destination lite zinbound-dest -c (Get-Content tools\_dest_config.json -Raw)
+#   2) 构建并推送：
+#        cd ui
+#        npm install && npm run build
+#        cf push
+#
+# 与 mta.yaml 的区别：
+#   * 只部署 **1 个应用**（approuter 同时提供静态资源与 OData 转发）
+#   * 不需要 mbt 打包，不需要 html5-apps-repo 服务实例
+#   * destination 来自绑定的 destination 服务实例（approuter 自动按名解析）
+#   * 适合 POC / 快速验证；多环境、Work Zone 集成仍建议走 mta.yaml
+#
+# 重要（实测踩坑）：
+#   * approuter 的 `destinations` **环境变量不支持凭据**！
+#     其 schema（node_modules/@sap/approuter/lib/configuration/schemas/
+#     environment-destinations-schema.json）只允许 name/url/proxy/forwardAuthToken/
+#     strictSSL/timeout/IASDependencyName/setXForwardedHeaders。
+#     写 username/password 会启动失败：environment-destinations/username:
+#     Additional properties not allowed。
+#     因此 Basic 凭据必须通过 **destination 服务实例**提供。
+#   * xs-app-standalone.json 里 authenticationMethod 是 "none"，即没有登录页，
+#     URL 谁拿到谁能用（但 S/4 凭据在服务端，不暴露给浏览器）。
+#     要登录请改用 XSUAA + mta.yaml 路径。
+
+applications:
+  - name: zinbound
+    path: .
+    memory: 512M
+    disk_quota: 1024M
+    # Ubuntu 24.04；cflinuxfs3/4 已 DEPRECATED，新推送请用 cflinuxfs5
+    # 查看可用 stack：cf stacks
+    stack: cflinuxfs5
+    buildpacks:
+      - nodejs_buildpack
+    services:
+      - zinbound-dest
+    env:
+      NODE_ENV: production

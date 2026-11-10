@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	ZSB_INBZB_O2 - 生产完工入库单 OData V2 元数据（本地 Mock 用，与 ABAP Cloud RAP 后端 CDS/BDEF 保持一致）
+	  EntitySet InboundHeader : 抬头，键 InboundNo
+	  EntitySet InboundItem   : 明细，复合键 InboundNo + ItemNo
+	  其余 *VH 集合为只读值帮助
+-->
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+	<edmx:DataServices m:DataServiceVersion="2.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+		<Schema Namespace="ZSB_INBZB_O2" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+
+			<!-- ============================ 抬头 ============================ -->
+			<EntityType Name="InboundHeader" sap:label="生产完工入库单" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="InboundNo"/>
+				</Key>
+				<Property Name="InboundNo" Type="Edm.String" Nullable="false" MaxLength="14" sap:label="入库单号" sap:creatable="true" sap:updatable="false"/>
+				<Property Name="WorkOrder" Type="Edm.String" MaxLength="12" sap:label="工单号" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="WorkCenter" Type="Edm.String" MaxLength="10" sap:label="生产车间" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="ProdLine" Type="Edm.String" MaxLength="12" sap:label="产线" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="Team" Type="Edm.String" MaxLength="12" sap:label="班组" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="Warehouse" Type="Edm.String" MaxLength="10" sap:label="库房" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="MesNo" Type="Edm.String" MaxLength="20" sap:label="MES单号" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="Remark" Type="Edm.String" MaxLength="255" sap:label="备注" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="TotalItems" Type="Edm.Int32" sap:label="行项目数" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="TotalLength" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="合计长度" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="TotalWeight" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="合计重量" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:label="创建人" sap:creatable="false" sap:updatable="false"/>
+				<NavigationProperty Name="to_Items" Relationship="ZSB_INBZB_O2.AssocHeaderItems" FromRole="Header" ToRole="Item" sap:label="入库明细"/>
+			</EntityType>
+
+			<!-- ============================ 明细 ============================ -->
+			<EntityType Name="InboundItem" sap:label="入库明细" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="InboundNo"/>
+					<PropertyRef Name="ItemNo"/>
+				</Key>
+				<Property Name="InboundNo" Type="Edm.String" Nullable="false" MaxLength="14" sap:label="入库单号" sap:creatable="true" sap:updatable="false"/>
+				<Property Name="ItemNo" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="行号" sap:creatable="true" sap:updatable="false"/>
+				<Property Name="Material" Type="Edm.String" MaxLength="40" sap:label="物料编码" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="CoilType" Type="Edm.String" MaxLength="20" sap:label="盘型编码" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="CoilNo" Type="Edm.String" MaxLength="30" sap:label="盘号" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="BatchNo" Type="Edm.String" MaxLength="20" sap:label="批次号" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="SerialNo" Type="Edm.String" MaxLength="30" sap:label="序列号" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="ActualLength" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="实际长度" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="ActualWeight" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="实际重量" sap:creatable="true" sap:updatable="true"/>
+				<Property Name="StorageBin" Type="Edm.String" MaxLength="20" sap:label="库位编码" sap:creatable="true" sap:updatable="true"/>
+			</EntityType>
+
+			<!-- ========================= 值帮助集合 ========================= -->
+			<EntityType Name="WorkCenterVH" sap:label="生产车间值帮助" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="WorkCenter"/>
+				</Key>
+				<Property Name="WorkCenter" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="生产车间"/>
+				<Property Name="WorkCenterText" Type="Edm.String" MaxLength="60" sap:label="车间名称"/>
+			</EntityType>
+
+			<EntityType Name="ProdLineVH" sap:label="产线值帮助" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="ProdLine"/>
+				</Key>
+				<Property Name="ProdLine" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="产线"/>
+				<Property Name="ProdLineText" Type="Edm.String" MaxLength="60" sap:label="产线名称"/>
+			</EntityType>
+
+			<EntityType Name="TeamVH" sap:label="班组值帮助" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Team"/>
+				</Key>
+				<Property Name="Team" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="班组"/>
+				<Property Name="TeamText" Type="Edm.String" MaxLength="60" sap:label="班组名称"/>
+			</EntityType>
+
+			<EntityType Name="WarehouseVH" sap:label="库房值帮助" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Warehouse"/>
+				</Key>
+				<Property Name="Warehouse" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="库房"/>
+				<Property Name="WarehouseText" Type="Edm.String" MaxLength="60" sap:label="库房名称"/>
+			</EntityType>
+
+			<EntityType Name="StorageBinVH" sap:label="库位值帮助" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="StorageBin"/>
+				</Key>
+				<Property Name="StorageBin" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="库位编码"/>
+				<Property Name="StorageBinText" Type="Edm.String" MaxLength="60" sap:label="库位名称"/>
+			</EntityType>
+
+			<EntityType Name="CoilTypeVH" sap:label="盘型值帮助" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="CoilType"/>
+				</Key>
+				<Property Name="CoilType" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="盘型编码"/>
+				<Property Name="CoilTypeText" Type="Edm.String" MaxLength="60" sap:label="盘型名称"/>
+			</EntityType>
+
+			<!-- ========================== 关联（1..*） ========================== -->
+			<Association Name="AssocHeaderItems" sap:content-version="1">
+				<End Type="ZSB_INBZB_O2.InboundHeader" Role="Header" Multiplicity="1"/>
+				<End Type="ZSB_INBZB_O2.InboundItem" Role="Item" Multiplicity="*"/>
+				<ReferentialConstraint>
+					<Principal Role="Header">
+						<PropertyRef Name="InboundNo"/>
+					</Principal>
+					<Dependent Role="Item">
+						<PropertyRef Name="InboundNo"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+
+			<!-- ============================ 容器 ============================ -->
+			<EntityContainer Name="ZSB_INBZB_O2_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json" sap:content-version="1">
+				<EntitySet Name="InboundHeader" EntityType="ZSB_INBZB_O2.InboundHeader" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="InboundItem" EntityType="ZSB_INBZB_O2.InboundItem" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="WorkCenterVH" EntityType="ZSB_INBZB_O2.WorkCenterVH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="ProdLineVH" EntityType="ZSB_INBZB_O2.ProdLineVH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="TeamVH" EntityType="ZSB_INBZB_O2.TeamVH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="WarehouseVH" EntityType="ZSB_INBZB_O2.WarehouseVH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="StorageBinVH" EntityType="ZSB_INBZB_O2.StorageBinVH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="CoilTypeVH" EntityType="ZSB_INBZB_O2.CoilTypeVH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="AssocHeaderItemsSet" Association="ZSB_INBZB_O2.AssocHeaderItems" sap:content-version="1">
+					<End Role="Header" EntitySet="InboundHeader"/>
+					<End Role="Item" EntitySet="InboundItem"/>
+				</AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

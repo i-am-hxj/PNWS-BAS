@@ -1,0 +1,32 @@
+{
+  "xsappname": "zinbound-approuter",
+  "tenant-mode": "dedicated",
+  "description": "生产完工入库单管理前端（approuter）安全描述",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Display",
+      "description": "查看入库单"
+    },
+    {
+      "name": "$XSAPPNAME.Edit",
+      "description": "维护入库单"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "InboundViewer",
+      "description": "入库单查看",
+      "scope-references": [
+        "$XSAPPNAME.Display"
+      ]
+    },
+    {
+      "name": "InboundEditor",
+      "description": "入库单维护",
+      "scope-references": [
+        "$XSAPPNAME.Display",
+        "$XSAPPNAME.Edit"
+      ]
+    }
+  ]
+}

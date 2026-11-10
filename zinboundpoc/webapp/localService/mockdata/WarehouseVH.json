@@ -1,0 +1,18 @@
+{
+	"d": {
+		"results": [
+			{
+				"Warehouse": "WH01",
+				"WarehouseText": "成品库一"
+			},
+			{
+				"Warehouse": "WH02",
+				"WarehouseText": "成品库二"
+			},
+			{
+				"Warehouse": "WH03",
+				"WarehouseText": "半成品库"
+			}
+		]
+	}
+}

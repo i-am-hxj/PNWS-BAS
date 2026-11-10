@@ -1,0 +1,124 @@
+{
+	"_version": "1.58.0",
+	"sap.app": {
+		"id": "panawin.zinbound",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZSB_INBZB_O2/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "@sap/ux-app-migrator:freestyle",
+			"version": "1.33.0",
+			"toolsId": "f0e0d268-67a9-4798-9ba0-a8954a8283b6"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://product",
+			"favIcon": "sap-icon://product"
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": false
+		},
+		"supportedThemes": [
+			"sap_horizon",
+			"sap_fiori_3"
+		]
+	},
+	"sap.ui5": {
+		"dependencies": {
+			"minUI5Version": "1.120.0",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"rootView": {
+			"viewName": "panawin.zinbound.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "panawin.zinbound.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"settings": {
+					"useBatch": true,
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "None",
+					"defaultUpdateMethod": "MERGE",
+					"groupId": "changes",
+					"updateGroupId": "changes"
+				}
+			},
+			"vh": {
+				"type": "sap.ui.model.json.JSONModel"
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "panawin.zinbound.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true,
+				"bypassed": {
+					"target": "list"
+				}
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "list",
+					"target": "list"
+				},
+				{
+					"pattern": "detail/{inboundNo}",
+					"name": "detail",
+					"target": "detail"
+				}
+			],
+			"targets": {
+				"list": {
+					"viewId": "list",
+					"viewName": "List"
+				},
+				"detail": {
+					"viewId": "detail",
+					"viewName": "Detail"
+				}
+			}
+		}
+	}
+}

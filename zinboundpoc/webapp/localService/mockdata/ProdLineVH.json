@@ -1,0 +1,18 @@
+{
+	"d": {
+		"results": [
+			{
+				"ProdLine": "PL-A",
+				"ProdLineText": "A 线（1450 轧机）"
+			},
+			{
+				"ProdLine": "PL-B",
+				"ProdLineText": "B 线（1850 轧机）"
+			},
+			{
+				"ProdLine": "PL-C",
+				"ProdLineText": "C 线（精整拉矫）"
+			}
+		]
+	}
+}

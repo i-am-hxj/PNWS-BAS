@@ -1,0 +1,28 @@
+{
+  "generationParameters": {
+    "generationDate": "Wed May 13 2026 11:59:21 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "https://my438637.s4hana.cloud.sap/sap/opu/odata/sap/ZSB_ERP360",
+    "appName": "zerp360_khtt01",
+    "appTitle": "ERP360指标考核记录",
+    "appDescription": "ERP360指标考核记录",
+    "appNamespace": "",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.142.12",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.24.0",
+    "template": "List Report Page V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "zi_erp360n_khtt01"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

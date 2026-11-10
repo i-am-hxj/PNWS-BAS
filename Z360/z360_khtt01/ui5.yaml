@@ -1,0 +1,41 @@
+specVersion: "4.0"
+metadata:
+  name: zerp360khtt01
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertErrors: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /sap
+            url: https://my201701.s4hana.sapcloud.cn
+            destination: panawincn-dev-bw08m86h
+            authenticationType: reentranceTicket
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        flp:
+          theme: sap_horizon
+    - name: fiori-tools-servestatic
+      afterMiddleware: compression
+      configuration:
+        paths:
+          - path: /resources/zerp3601001
+            src: ../zerp360_1001/webapp
+          - path: /appconfig
+            src: appconfig
+          - path: /resources/zerp3601015
+            src: ../zerp360_1015/webapp

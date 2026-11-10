@@ -1,0 +1,72 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:layout="sap.ui.layout">
+	<form:SimpleForm xmlns:form="sap.ui.layout.form" 
+					layout="ResponsiveGridLayout"
+					columnsXL="3" columnsL="3" columnsM="3">
+		<form:content>
+
+			<VBox class="sapUiSmallMargin">
+				<Title text="字段选择" titleStyle="H5" class="sapUiTinyMarginBottom" />
+				<Table id="excludeRulesTable" mode="{= ${ui>/editable} ? 'SingleSelectLeft' : 'None' }" items="{fields>/Fields}" selectionChange="onFieldSelectionChange"> 
+					<!-- <headerToolbar>
+						<OverflowToolbar>
+							<Title text="表字段" />
+						</OverflowToolbar>
+					</headerToolbar> -->
+					<columns>
+						<Column><Text text="字段名称" /></Column>
+						<Column><Text text="字段描述" /></Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Text text="{fields>FieldName}" />
+								<Text text="{fields>FieldDescription}" />
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+			<!-- <core:Title text="公式" xmlns:core="sap.ui.core" /> -->
+				<VBox class="sapUiSmallMargin customVerticalDivider">
+					<Title text="公式" titleStyle="H5" class="sapUiTinyMarginBottom" />
+					<!-- Using a Grid inside the Form to force columns for RadioButtons -->
+					<layout:Grid defaultSpan="XL4 L4 M4 S6" vSpacing="0" hSpacing="0">
+						<Button id="math.equal" text="=" type="Emphasized" press="onMathEqual" enabled="{ui>/editable}" />
+						<Button id="math.ltgt" text="&lt;&gt;" type="Emphasized" press="onMathLtGt" enabled="{ui>/editable}" />
+						<Button id="math.gt" text="&gt;" type="Emphasized" press="onMathGt" enabled="{ui>/editable}" />
+						<Button id="math.lt" text="&lt;" type="Emphasized" press="onMathLt" enabled="{ui>/editable}" />
+						<Button id="math.gte" text="&gt;=" type="Emphasized" press="onMathGte" enabled="{ui>/editable}" />
+						<Button id="math.lte" text="&lt;=" type="Emphasized" press="onMathLte" enabled="{ui>/editable}" />
+						<Button id="math.brackets.left" text="(" type="Emphasized" press="onMathBracketsLeft" enabled="{ui>/editable}" />
+						<Button id="math.brackets.right" text=")" type="Emphasized" press="onMathBracketsRight" enabled="{ui>/editable}" />
+						<Button id="math.and" text="AND" type="Emphasized" press="onMathAnd" enabled="{ui>/editable}" />
+						<Button id="math.or" text="OR" type="Emphasized" press="onMathOr" enabled="{ui>/editable}" />
+						<Button id="math.not" text="NOT" type="Emphasized" press="onMathNot" enabled="{ui>/editable}" />
+						<Button id="math.cs" text="CS" type="Emphasized" press="onMathCS"  enabled="{ui>/editable}" />
+					</layout:Grid>
+					<HBox alignItems="Center" class="sapUiSmallMarginBottom">
+						<Title text="常量:" width="80px"/>
+						<Input id="idConstantInput" 
+							placeholder="输入常量 (如: 100, 'ABC')" 
+							width="180px"
+							enabled="{ui>/editable}" />
+						<Button id="insertConstant" text="插入" 
+								type="Ghost" 
+								press="onInsertConstant" 
+								enabled="{ui>/editable}" 
+								class="sapUiTinyMarginBegin" />
+					</HBox>
+				</VBox>
+			
+			<VBox class="sapUiSmallMargin customVerticalDivider">
+			    <Title text="排除规则" titleStyle="H5" class="sapUiTinyMarginBottom" />
+				<TextArea id="excludeRulesTextArea" rows="6" width="100%" value="{excluderules}" editable="false" />
+				<Button id="resetChangesForRules" text="清空" type="Emphasized" press="onFormReset" enabled="{ui>/editable}"/>
+				<Button id="returnLastChanges" text="回退" type="Emphasized" press="onReturnLastChanges" enabled="{ui>/editable}"/>
+			</VBox>
+				
+		</form:content>
+	</form:SimpleForm>
+
+</core:FragmentDefinition>

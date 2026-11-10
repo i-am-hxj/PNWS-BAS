@@ -1,0 +1,41 @@
+{
+  "name": "panawin.zinbound",
+  "version": "0.0.1",
+  "private": true,
+  "description": "生产完工入库单管理 - SAPUI5 Freestyle 前端（UI5 1.120.x / OData V2 / ABAP Cloud RAP 后端 ZSB_INBZB_O2）",
+  "keywords": [
+    "SAPUI5",
+    "OpenUI5",
+    "ODataV2",
+    "Freestyle",
+    "RAP",
+    "ui5",
+    "openui5",
+    "sapui5"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {
+    "serve": "ui5 serve --port 8080",
+    "build:selfcontained": "ui5 build --all --clean-dest --dest dist",
+    "start_old": "ui5 serve --port 8080 --open \"index.html?mock=true\"",
+    "build_old": "ui5 build --clean-dest --dest dist",
+    "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#app-tile\"",
+    "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandboxMockServer.html?sap-ui-xx-viewCache=false#app-tile\"",
+    "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
+    "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
+    "build": "ui5 build -a --clean-dest --include-task=generateCachebusterInfo",
+    "deploy": "fiori verify",
+    "deploy-config": "fiori add deploy-config",
+    "start-mock": "fiori run --open \"test/flpSandboxMockServer.html?sap-ui-xx-viewCache=false#app-tile\""
+  },
+  "dependencies": {
+    "@sap/approuter": "^16.4.0"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^4.0.0",
+    "@sap/ux-ui5-tooling": "1",
+    "rimraf": "6.0.1"
+  },
+  "sapuxLayer": "CUSTOMER_BASE",
+  "main": "webapp/index.html"
+}

@@ -1,0 +1,18 @@
+{
+	"d": {
+		"results": [
+			{
+				"Team": "T01",
+				"TeamText": "甲班"
+			},
+			{
+				"Team": "T02",
+				"TeamText": "乙班"
+			},
+			{
+				"Team": "T03",
+				"TeamText": "丙班"
+			}
+		]
+	}
+}

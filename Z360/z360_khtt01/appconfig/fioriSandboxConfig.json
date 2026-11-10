@@ -1,0 +1,175 @@
+{
+    "applications": {
+        "zerp360_1001-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601001",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601001"
+        },
+        "zerp360_1003-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601003",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601003"
+        },
+        "zerp360_1004-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601004",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601004"
+        },
+        "zerp360_1007-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601007",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601007"
+        },
+        "zerp360_1008-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601008",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601008"
+        },
+        "zerp360_1009-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601009",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601009"
+        },
+        "zerp360_1010-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601010",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601010"
+        },
+        "zerp360_1011-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601011",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601011"
+        },
+        "zerp360_1012-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601012",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601012"
+        },
+        "zerp360_1013-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601013",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601013"
+        },
+        "zerp360_1014-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601014",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601014"
+        },
+        "zerp360_1015-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601015",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601015"
+        },
+        "zerp360_1016-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601016",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601016"
+        },
+        "zerp360_1018-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601018",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601018"
+        },
+        "zerp360_1029-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601029",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601029"
+        },
+        "zerp360_1030-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601030",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601030"
+        },
+        "zerp360_1031-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601031",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601031"
+        },
+        "zerp360_1032-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601032",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601032"
+        },
+        "zerp360_1034-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601034",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601034"
+        },
+        "zerp360_1051-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601051",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601051"
+        }
+        ,
+        "zerp360_1052-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601052",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601052"
+        },
+        "zerp360_1053-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601053",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601053"
+        },
+        "zerp360_1054-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601054",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601054"
+        },
+        "zerp360_1059-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601059",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601059"
+        },
+        "zerp360_1062-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601062",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601062"
+        },
+        "zerp360_1098-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601098",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601098"
+        },
+        "zerp360_1099-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601099",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601099"
+        },
+        "zerp360_1100-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601100",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601100"
+        },
+        "zerp360_1102-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601102",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601102"
+        },
+        "zerp360_1105-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601105",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601105"
+        },
+        "zerp360_1122-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601122",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601122"
+        },
+        "zerp360_1128-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601128",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601128"
+        },
+        "zerp360_1129-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601129",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601129"
+        },
+        "zerp360_1156-display": {
+            "additionalInformation": "SAPUI5.Component=zerp3601156",
+            "applicationType": "URL",
+            "url": "../resources/zerp3601156"
+        }
+    }
+}

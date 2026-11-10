@@ -1,0 +1,29 @@
+{
+  "generationParameters": {
+    "generationDate": "Tue Nov 03 2026 02:31:43 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "https://my201701.s4hana.sapcloud.cn/sap/opu/odata4/sap/zsb_falabel/srvd/sap/zsd_falabel/0001/",
+    "appName": "zfixedassetlabel",
+    "appTitle": "固定资产标签打印",
+    "appDescription": "固定资产标签打印",
+    "appNamespace": "",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.148.10",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.34.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "FixedAssetLabel"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```",
+    "valueHelpDownloaded": true
+  }
+}

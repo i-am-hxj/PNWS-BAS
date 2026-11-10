@@ -1,0 +1,102 @@
+{
+	"d": {
+		"results": [
+			{
+				"InboundNo": "IN202610200001",
+				"ItemNo": "000010",
+				"Material": "MAT-AL-1001",
+				"CoilType": "CT-A1",
+				"CoilNo": "C2026102001",
+				"BatchNo": "B2026102001",
+				"SerialNo": "SN20261020010001",
+				"ActualLength": "1200.000",
+				"ActualWeight": "2350.250",
+				"StorageBin": "A-01-01"
+			},
+			{
+				"InboundNo": "IN202610200001",
+				"ItemNo": "000020",
+				"Material": "MAT-AL-1002",
+				"CoilType": "CT-B2",
+				"CoilNo": "C2026102002",
+				"BatchNo": "B2026102002",
+				"SerialNo": "SN20261020010002",
+				"ActualLength": "1200.500",
+				"ActualWeight": "2400.250",
+				"StorageBin": "A-01-02"
+			},
+			{
+				"InboundNo": "IN202610200002",
+				"ItemNo": "000010",
+				"Material": "MAT-AL-2001",
+				"CoilType": "CT-A1",
+				"CoilNo": "C2026102003",
+				"BatchNo": "B2026102003",
+				"SerialNo": "SN20261020020001",
+				"ActualLength": "1350.000",
+				"ActualWeight": "2600.000",
+				"StorageBin": "B-02-01"
+			},
+			{
+				"InboundNo": "IN202610200002",
+				"ItemNo": "000020",
+				"Material": "MAT-AL-2002",
+				"CoilType": "CT-A1",
+				"CoilNo": "C2026102004",
+				"BatchNo": "B2026102004",
+				"SerialNo": "SN20261020020002",
+				"ActualLength": "1250.000",
+				"ActualWeight": "2500.500",
+				"StorageBin": "B-02-02"
+			},
+			{
+				"InboundNo": "IN202610200002",
+				"ItemNo": "000030",
+				"Material": "MAT-AL-2003",
+				"CoilType": "CT-C3",
+				"CoilNo": "C2026102005",
+				"BatchNo": "B2026102005",
+				"SerialNo": "SN20261020020003",
+				"ActualLength": "1000.000",
+				"ActualWeight": "2100.250",
+				"StorageBin": "B-02-03"
+			},
+			{
+				"InboundNo": "IN202610210001",
+				"ItemNo": "000010",
+				"Material": "MAT-CU-3001",
+				"CoilType": "CT-B2",
+				"CoilNo": "C2026102101",
+				"BatchNo": "B2026102101",
+				"SerialNo": "SN20261021010001",
+				"ActualLength": "1100.000",
+				"ActualWeight": "2300.000",
+				"StorageBin": "C-03-01"
+			},
+			{
+				"InboundNo": "IN202610210001",
+				"ItemNo": "000020",
+				"Material": "MAT-CU-3002",
+				"CoilType": "CT-B2",
+				"CoilNo": "C2026102102",
+				"BatchNo": "B2026102102",
+				"SerialNo": "SN20261021010002",
+				"ActualLength": "950.000",
+				"ActualWeight": "2100.125",
+				"StorageBin": "C-03-02"
+			},
+			{
+				"InboundNo": "IN202610210001",
+				"ItemNo": "000030",
+				"Material": "MAT-CU-3003",
+				"CoilType": "CT-C3",
+				"CoilNo": "C2026102103",
+				"BatchNo": "B2026102103",
+				"SerialNo": "SN20261021010003",
+				"ActualLength": "950.000",
+				"ActualWeight": "2000.125",
+				"StorageBin": "C-03-03"
+			}
+		]
+	}
+}

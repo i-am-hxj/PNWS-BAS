@@ -1,0 +1,116 @@
+<mvc:View
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	controllerName="panawin.zinbound.controller.List"
+	height="100%">
+
+	<Page
+		id="listPage"
+		title="{i18n>listTitle}"
+		showHeader="true">
+
+		<headerContent>
+			<Button id="btnCreate" text="{i18n>btnCreate}" icon="sap-icon://add" type="Emphasized" press=".onCreate"/>
+			<Button id="btnDelete" text="{i18n>btnDelete}" icon="sap-icon://delete" press=".onDelete"/>
+			<Button id="btnPrint" text="{i18n>btnPrint}" icon="sap-icon://print" press=".onPrint"/>
+			<Button id="btnRefresh" text="{i18n>btnRefresh}" icon="sap-icon://refresh" press=".onRefresh"/>
+		</headerContent>
+
+		<subHeader>
+			<OverflowToolbar>
+				<SearchField
+					id="searchField"
+					width="18rem"
+					placeholder="{i18n>searchPlaceholder}"
+					tooltip="{i18n>searchPlaceholder}"
+					search=".onSearch"
+					liveChange=".onSearchLive"/>
+				<ToolbarSpacer/>
+				<Label text="{i18n>sortBy}" labelFor="sortField"/>
+				<Select id="sortField" width="11rem" change=".onSortChange">
+					<core:Item key="InboundNo" text="{i18n>sortFieldInboundNo}"/>
+					<core:Item key="WorkOrder" text="{i18n>sortFieldWorkOrder}"/>
+					<core:Item key="CreatedBy" text="{i18n>sortFieldCreatedBy}"/>
+					<core:Item key="TotalWeight" text="{i18n>sortFieldTotalWeight}"/>
+				</Select>
+				<ToggleButton
+					id="sortDesc"
+					icon="sap-icon://sort-descending"
+					pressed="true"
+					press=".onSortChange"
+					tooltip="{i18n>sortOrderTooltip}"/>
+			</OverflowToolbar>
+		</subHeader>
+
+		<content>
+			<Table
+				id="inboundTable"
+				mode="MultiSelect"
+				growing="false"
+				busyIndicatorDelay="0"
+				noDataText="{i18n>noDataText}"
+				selectionChange=".onSelectionChange"
+				items="{path: '/InboundHeader', sorter: {path: 'InboundNo', descending: true}}">
+
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title id="tableTitle" text="{i18n>tableTitle}" level="H2"/>
+						<ToolbarSpacer/>
+						<Text id="txtSelected" text="{i18n>selectedInfo}"/>
+					</OverflowToolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="colInboundNo" width="10rem">
+						<Text text="{i18n>colInboundNo}"/>
+					</Column>
+					<Column id="colWorkOrder" width="9rem">
+						<Text text="{i18n>colWorkOrder}"/>
+					</Column>
+					<Column id="colWorkCenter" width="9rem">
+						<Text text="{i18n>colWorkCenter}"/>
+					</Column>
+					<Column id="colProdLine" width="9rem">
+						<Text text="{i18n>colProdLine}"/>
+					</Column>
+					<Column id="colTeam" width="6rem">
+						<Text text="{i18n>colTeam}"/>
+					</Column>
+					<Column id="colWarehouse" width="9rem">
+						<Text text="{i18n>colWarehouse}"/>
+					</Column>
+					<Column id="colMesNo" width="11rem">
+						<Text text="{i18n>colMesNo}"/>
+					</Column>
+					<Column id="colTotalItems" width="6rem" hAlign="End">
+						<Text text="{i18n>colTotalItems}"/>
+					</Column>
+					<Column id="colTotalWeight" width="7rem" hAlign="End">
+						<Text text="{i18n>colTotalWeight}"/>
+					</Column>
+					<Column id="colCreatedBy" width="6rem">
+						<Text text="{i18n>colCreatedBy}"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<Link text="{InboundNo}" press=".onOpenDetail" wrapping="false"/>
+							<Text text="{WorkOrder}" wrapping="false"/>
+							<Text text="{parts: [{path: 'WorkCenter'}, {path: 'vh>/WorkCenterVH'}], formatter: '.formatter.formatVhText'}" wrapping="false"/>
+							<Text text="{parts: [{path: 'ProdLine'}, {path: 'vh>/ProdLineVH'}], formatter: '.formatter.formatVhText'}" wrapping="false"/>
+							<Text text="{parts: [{path: 'Team'}, {path: 'vh>/TeamVH'}], formatter: '.formatter.formatVhText'}" wrapping="false"/>
+							<Text text="{parts: [{path: 'Warehouse'}, {path: 'vh>/WarehouseVH'}], formatter: '.formatter.formatVhText'}" wrapping="false"/>
+							<Text text="{path: 'MesNo', formatter: '.formatter.formatText'}" wrapping="false"/>
+							<Text text="{path: 'TotalItems', formatter: '.formatter.formatInteger'}" textAlign="End"/>
+							<Text text="{path: 'TotalWeight', formatter: '.formatter.formatDecimal3'}" textAlign="End"/>
+							<Text text="{path: 'CreatedBy', formatter: '.formatter.formatText'}" wrapping="false"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

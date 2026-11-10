@@ -1,0 +1,32 @@
+{
+  "generationParameters": {
+    "generationDate": "Thu Nov 05 2026 03:20:40 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "https://my201701.s4hana.sapcloud.cn/sap/opu/odata/sap/ZSB_IFSET",
+    "appName": "zifset",
+    "appTitle": "接口配置平台",
+    "appDescription": "接口配置平台",
+    "appNamespace": "",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.148.10",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.34.0",
+    "template": "List Report Page V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "IfSystem"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "to_Items"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

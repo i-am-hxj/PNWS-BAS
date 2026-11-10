@@ -1,0 +1,173 @@
+<mvc:View
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	controllerName="panawin.zinbound.controller.Detail"
+	height="100%">
+
+	<Page
+		id="detailPage"
+		title="{detail>/header/InboundNo}"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+
+		<headerContent>
+			<Button id="btnSave" text="{i18n>btnSave}" icon="sap-icon://save" type="Emphasized" press=".onSave"/>
+			<Button id="btnCancel" text="{i18n>btnCancel}" icon="sap-icon://decline" press=".onCancel"/>
+			<Button id="btnPrintDetail" text="{i18n>btnPrint}" icon="sap-icon://print" press=".onPrint"/>
+		</headerContent>
+
+		<content>
+			<!-- ===================== 抬头（可编辑） ===================== -->
+			<f:SimpleForm
+				id="headerForm"
+				editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanXL="4"
+				labelSpanL="4"
+				labelSpanM="4"
+				labelSpanS="12"
+				adjustLabelSpan="false"
+				emptySpanXL="0"
+				emptySpanL="0"
+				emptySpanM="0"
+				emptySpanS="0"
+				columnsXL="2"
+				columnsL="2"
+				columnsM="1"
+				singleContainerFullSize="false"
+				title="{i18n>headerSectionTitle}">
+				<f:content>
+					<Label text="{i18n>lblInboundNo}" labelFor="txtInboundNo"/>
+					<Text id="txtInboundNo" text="{path: 'detail>/header/InboundNo', formatter: '.formatter.formatText'}"/>
+
+					<Label text="{i18n>lblCreatedBy}" labelFor="txtCreatedBy"/>
+					<Text id="txtCreatedBy" text="{path: 'detail>/header/CreatedBy', formatter: '.formatter.formatText'}"/>
+
+					<Label text="{i18n>lblWorkOrder}" required="true" labelFor="inpWorkOrder"/>
+					<Input id="inpWorkOrder" value="{detail>/header/WorkOrder}" maxLength="12" placeholder="{i18n>phWorkOrder}"/>
+
+					<Label text="{i18n>lblWarehouse}" required="true" labelFor="cbWarehouse"/>
+					<ComboBox id="cbWarehouse" selectedKey="{detail>/header/Warehouse}" items="{vh>/WarehouseVH}" placeholder="{i18n>phWarehouse}" showClearIcon="true">
+						<core:ListItem key="{vh>Warehouse}" text="{vh>Warehouse}" additionalText="{vh>WarehouseText}"/>
+					</ComboBox>
+
+					<Label text="{i18n>lblWorkCenter}" labelFor="cbWorkCenter"/>
+					<ComboBox id="cbWorkCenter" selectedKey="{detail>/header/WorkCenter}" items="{vh>/WorkCenterVH}" placeholder="{i18n>phWorkCenter}" showClearIcon="true">
+						<core:ListItem key="{vh>WorkCenter}" text="{vh>WorkCenter}" additionalText="{vh>WorkCenterText}"/>
+					</ComboBox>
+
+					<Label text="{i18n>lblProdLine}" labelFor="cbProdLine"/>
+					<ComboBox id="cbProdLine" selectedKey="{detail>/header/ProdLine}" items="{vh>/ProdLineVH}" placeholder="{i18n>phProdLine}" showClearIcon="true">
+						<core:ListItem key="{vh>ProdLine}" text="{vh>ProdLine}" additionalText="{vh>ProdLineText}"/>
+					</ComboBox>
+
+					<Label text="{i18n>lblTeam}" labelFor="cbTeam"/>
+					<ComboBox id="cbTeam" selectedKey="{detail>/header/Team}" items="{vh>/TeamVH}" placeholder="{i18n>phTeam}" showClearIcon="true">
+						<core:ListItem key="{vh>Team}" text="{vh>Team}" additionalText="{vh>TeamText}"/>
+					</ComboBox>
+
+					<Label text="{i18n>lblMesNo}" labelFor="inpMesNo"/>
+					<Input id="inpMesNo" value="{detail>/header/MesNo}" maxLength="20" placeholder="{i18n>phMesNo}"/>
+
+					<Label text="{i18n>lblTotalItems}" labelFor="txtTotalItems"/>
+					<Text id="txtTotalItems" text="{path: 'detail>/header/TotalItems', formatter: '.formatter.formatInteger'}"/>
+
+					<Label text="{i18n>lblTotalLength}" labelFor="txtTotalLength"/>
+					<Text id="txtTotalLength" text="{path: 'detail>/header/TotalLength', formatter: '.formatter.formatDecimal3'}"/>
+
+					<Label text="{i18n>lblTotalWeight}" labelFor="txtTotalWeight"/>
+					<Text id="txtTotalWeight" text="{path: 'detail>/header/TotalWeight', formatter: '.formatter.formatDecimal3'}"/>
+
+					<Label text="{i18n>lblRemark}" labelFor="inpRemark"/>
+					<Input id="inpRemark" value="{detail>/header/Remark}" maxLength="255" placeholder="{i18n>phRemark}"/>
+				</f:content>
+			</f:SimpleForm>
+
+			<!-- ===================== 明细（可编辑表格） ===================== -->
+			<Table
+				id="itemsTable"
+				mode="None"
+				growing="false"
+				inset="false"
+				busyIndicatorDelay="0"
+				noDataText="{i18n>noItemsText}"
+				items="{detail>/items}">
+
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title id="itemsTitle" text="{i18n>itemsSectionTitle}" level="H2"/>
+						<ToolbarSpacer/>
+						<Button id="btnAddItem" text="{i18n>btnAddItem}" icon="sap-icon://add" type="Transparent" press=".onAddItem"/>
+					</OverflowToolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="colItemNo" width="5rem">
+						<Text text="{i18n>colItemNo}"/>
+					</Column>
+					<Column id="colMaterial" width="11rem">
+						<Text text="{i18n>colMaterial}"/>
+					</Column>
+					<Column id="colCoilType" width="9rem">
+						<Text text="{i18n>colCoilType}"/>
+					</Column>
+					<Column id="colCoilNo" width="10rem">
+						<Text text="{i18n>colCoilNo}"/>
+					</Column>
+					<Column id="colBatchNo" width="10rem">
+						<Text text="{i18n>colBatchNo}"/>
+					</Column>
+					<Column id="colSerialNo" width="12rem">
+						<Text text="{i18n>colSerialNo}"/>
+					</Column>
+					<Column id="colActualLength" width="8rem" hAlign="End">
+						<Text text="{i18n>colActualLength}"/>
+					</Column>
+					<Column id="colActualWeight" width="8rem" hAlign="End">
+						<Text text="{i18n>colActualWeight}"/>
+					</Column>
+					<Column id="colStorageBin" width="9rem">
+						<Text text="{i18n>colStorageBin}"/>
+					</Column>
+					<Column id="colItemActions" width="4rem" hAlign="Center">
+						<Text text="{i18n>colActions}"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<Text text="{path: 'detail>ItemNo', formatter: '.formatter.formatItemNo'}"/>
+							<Input
+								value="{detail>Material}"
+								maxLength="40"
+								required="true"
+								valueState="{path: 'detail>MaterialError', formatter: '.formatter.formatValueState'}"
+								valueStateText="{i18n>msgMaterialRequiredShort}"
+								placeholder="{i18n>phMaterial}"
+								liveChange=".onItemMaterialChange"/>
+							<ComboBox selectedKey="{detail>CoilType}" items="{vh>/CoilTypeVH}" placeholder="{i18n>phCoilType}">
+								<core:ListItem key="{vh>CoilType}" text="{vh>CoilType}" additionalText="{vh>CoilTypeText}"/>
+							</ComboBox>
+							<Input value="{detail>CoilNo}" maxLength="30" placeholder="{i18n>phCoilNo}"/>
+							<Input value="{detail>BatchNo}" maxLength="20" placeholder="{i18n>phBatchNo}"/>
+							<Input value="{detail>SerialNo}" maxLength="30" placeholder="{i18n>phSerialNo}"/>
+							<Input value="{detail>ActualLength}" maxLength="15" textAlign="End" placeholder="{i18n>phDecimal}" change=".onItemValueChange"/>
+							<Input value="{detail>ActualWeight}" maxLength="15" textAlign="End" placeholder="{i18n>phDecimal}" change=".onItemValueChange"/>
+							<ComboBox selectedKey="{detail>StorageBin}" items="{vh>/StorageBinVH}" placeholder="{i18n>phStorageBin}">
+								<core:ListItem key="{vh>StorageBin}" text="{vh>StorageBin}" additionalText="{vh>StorageBinText}"/>
+							</ComboBox>
+							<Button
+								icon="sap-icon://delete"
+								type="Transparent"
+								tooltip="{i18n>deleteItemTooltip}"
+								press=".onDeleteItem"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

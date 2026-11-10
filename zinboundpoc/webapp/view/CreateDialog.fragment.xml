@@ -1,0 +1,113 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+
+	<!--
+		新建入库单：只收集抬头信息。
+		入库单号由后端生成，因此这里不提供该字段；
+		确认后由 List.controller 先 createEntry + submitChanges 拿到真实 InboundNo，再跳转到明细页。
+	-->
+	<Dialog
+		id="createDialog"
+		title="{i18n>createTitle}"
+		contentWidth="42rem"
+		draggable="true"
+		resizable="false"
+		busyIndicatorDelay="0">
+
+		<content>
+			<f:SimpleForm
+				id="createForm"
+				editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanXL="4"
+				labelSpanL="4"
+				labelSpanM="4"
+				labelSpanS="12"
+				adjustLabelSpan="false"
+				emptySpanXL="0"
+				emptySpanL="0"
+				emptySpanM="0"
+				emptySpanS="0"
+				columnsXL="1"
+				columnsL="1"
+				columnsM="1"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="{i18n>lblWorkOrder}" required="true" labelFor="inpCreateWorkOrder"/>
+					<Input
+						id="inpCreateWorkOrder"
+						value="{create>/WorkOrder}"
+						maxLength="12"
+						placeholder="{i18n>phWorkOrder}"
+						submit=".onCreateConfirm"/>
+
+					<Label text="{i18n>lblWarehouse}" required="true" labelFor="cbCreateWarehouse"/>
+					<ComboBox
+						id="cbCreateWarehouse"
+						selectedKey="{create>/Warehouse}"
+						items="{vh>/WarehouseVH}"
+						placeholder="{i18n>phWarehouse}"
+						required="true">
+						<core:ListItem key="{vh>Warehouse}" text="{vh>Warehouse}" additionalText="{vh>WarehouseText}"/>
+					</ComboBox>
+
+					<Label text="{i18n>lblWorkCenter}" labelFor="cbCreateWorkCenter"/>
+					<ComboBox
+						id="cbCreateWorkCenter"
+						selectedKey="{create>/WorkCenter}"
+						items="{vh>/WorkCenterVH}"
+						placeholder="{i18n>phWorkCenter}"
+						showClearIcon="true">
+						<core:ListItem key="{vh>WorkCenter}" text="{vh>WorkCenter}" additionalText="{vh>WorkCenterText}"/>
+					</ComboBox>
+
+					<Label text="{i18n>lblProdLine}" labelFor="cbCreateProdLine"/>
+					<ComboBox
+						id="cbCreateProdLine"
+						selectedKey="{create>/ProdLine}"
+						items="{vh>/ProdLineVH}"
+						placeholder="{i18n>phProdLine}"
+						showClearIcon="true">
+						<core:ListItem key="{vh>ProdLine}" text="{vh>ProdLine}" additionalText="{vh>ProdLineText}"/>
+					</ComboBox>
+
+					<Label text="{i18n>lblTeam}" labelFor="cbCreateTeam"/>
+					<ComboBox
+						id="cbCreateTeam"
+						selectedKey="{create>/Team}"
+						items="{vh>/TeamVH}"
+						placeholder="{i18n>phTeam}"
+						showClearIcon="true">
+						<core:ListItem key="{vh>Team}" text="{vh>Team}" additionalText="{vh>TeamText}"/>
+					</ComboBox>
+
+					<Label text="{i18n>lblMesNo}" labelFor="inpCreateMesNo"/>
+					<Input
+						id="inpCreateMesNo"
+						value="{create>/MesNo}"
+						maxLength="20"
+						placeholder="{i18n>phMesNo}"/>
+
+					<Label text="{i18n>lblRemark}" labelFor="inpCreateRemark"/>
+					<Input
+						id="inpCreateRemark"
+						value="{create>/Remark}"
+						maxLength="255"
+						placeholder="{i18n>phRemark}"/>
+
+					<Label text=""/>
+					<Text text="{i18n>createNotice}" wrapping="true"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+
+		<beginButton>
+			<Button id="btnCreateConfirm" text="{i18n>btnCreateConfirm}" type="Emphasized" press=".onCreateConfirm"/>
+		</beginButton>
+		<endButton>
+			<Button id="btnCreateCancel" text="{i18n>btnCancel}" press=".onCreateCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

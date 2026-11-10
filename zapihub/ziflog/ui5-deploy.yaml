@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: ziflog
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: panawincn-dev-bw08m86h
+          url: https://my201701.s4hana.sapcloud.cn
+          authenticationType: reentranceTicket # SAML support for vscode
+        app:
+          name: ZIFLOG
+          package: ZIFLOG
+          transport: L0VK900017
+        exclude:
+          - /test/
+          - /localService/

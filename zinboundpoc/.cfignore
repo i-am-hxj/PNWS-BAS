@@ -1,0 +1,36 @@
+# .cfignore - cf push 时不上传的内容
+#
+# 原则：只上传运行期真正需要的东西
+#   package.json / package-lock.json   → CF 构建时 npm install 用
+#   Procfile                            → 启动命令
+#   xs-app.json                         → approuter 路由表
+#   dist/                               → 前端构建产物（由 localDir 提供静态资源）
+#
+# 其余一律不上传：源码、依赖、构建中间物、以及**内部配置/文档**
+# （少上传既加快部署，也避免把内部配置暴露在容器里）
+
+# 依赖与构建产物
+node_modules
+webapp
+mta_archives
+dist/**/*.map
+
+# 内部配置与文档（运行期不需要）
+mta.yaml
+nginx-zinbound.conf
+README.md
+ui5.yaml
+xs-security.json
+xs-app-standalone.json
+package.json.bak
+*.md
+*.log
+
+# 工具与版本控制
+tools
+.git
+.gitignore
+
+# 本地临时产物
+*.tgz
+*.zip

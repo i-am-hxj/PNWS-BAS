@@ -1,0 +1,38 @@
+{
+	"d": {
+		"results": [
+			{
+				"StorageBin": "A-01-01",
+				"StorageBinText": "成品库一 / A 区 01 排 01 位"
+			},
+			{
+				"StorageBin": "A-01-02",
+				"StorageBinText": "成品库一 / A 区 01 排 02 位"
+			},
+			{
+				"StorageBin": "B-02-01",
+				"StorageBinText": "成品库二 / B 区 02 排 01 位"
+			},
+			{
+				"StorageBin": "B-02-02",
+				"StorageBinText": "成品库二 / B 区 02 排 02 位"
+			},
+			{
+				"StorageBin": "B-02-03",
+				"StorageBinText": "成品库二 / B 区 02 排 03 位"
+			},
+			{
+				"StorageBin": "C-03-01",
+				"StorageBinText": "半成品库 / C 区 03 排 01 位"
+			},
+			{
+				"StorageBin": "C-03-02",
+				"StorageBinText": "半成品库 / C 区 03 排 02 位"
+			},
+			{
+				"StorageBin": "C-03-03",
+				"StorageBinText": "半成品库 / C 区 03 排 03 位"
+			}
+		]
+	}
+}

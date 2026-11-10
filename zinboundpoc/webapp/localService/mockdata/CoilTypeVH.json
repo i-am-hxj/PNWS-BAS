@@ -1,0 +1,18 @@
+{
+	"d": {
+		"results": [
+			{
+				"CoilType": "CT-A1",
+				"CoilTypeText": "立式卷（内径 508）"
+			},
+			{
+				"CoilType": "CT-B2",
+				"CoilTypeText": "卧式卷（内径 610）"
+			},
+			{
+				"CoilType": "CT-C3",
+				"CoilTypeText": "窄带卷（宽度 ≤ 300）"
+			}
+		]
+	}
+}

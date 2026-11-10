@@ -1,0 +1,113 @@
+# mta.yaml - 多目标应用描述（BTP Cloud Foundry 部署）
+# 模块 1：zinbound-app-content  -> HTML5 应用内容（UI5 前端）
+# 模块 2：zinbound-approuter    -> @sap/approuter，负责静态资源与 OData 目的地转发
+_schema-version: "3.2"
+ID: zinbound
+version: 1.0.0
+description: "生产完工入库单管理 - SAPUI5 Freestyle 前端（UI5 1.120.x / OData V2）"
+
+parameters:
+  enable-parallel-deployments: true
+
+modules:
+  # ---------------------------------------------------------------- 前端内容
+  - name: zinbound-app-content
+    type: html5
+    path: .
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npm run build
+      build-result: dist
+      supported-platforms: []
+    requires:
+      - name: zinbound-html5-repo-host
+        parameters:
+          service-key:
+            name: zinbound-html5-repo-host-key
+
+  # ---------------------------------------------------------------- Approuter
+  - name: zinbound-approuter
+    type: approuter.nodejs
+    path: .
+    parameters:
+      disk-quota: 512M
+      memory: 512M
+    build-parameters:
+      builder: custom
+      commands: []
+      supported-platforms: []
+      ignore:
+        - "webapp/"
+        - "dist/"
+    requires:
+      - name: zinbound-html5-runtime
+      - name: zinbound-destination-service
+      - name: zinbound-uaa
+
+resources:
+  # HTML5 应用仓库（app-host：存放构建产物）
+  - name: zinbound-html5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+
+  # HTML5 应用运行时（app-runtime：由 approuter 消费）
+  - name: zinbound-html5-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+
+  # XSUAA（approuter 登录 / 转发用户令牌）
+  - name: zinbound-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+
+  # 目的地服务：dest 指向后端的 /sap/opu/odata/ 路径
+  - name: zinbound-destination-service
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        init_data:
+          instance:
+            existing_destinations_policy: update
+            destinations:
+              - Name: zinbound-odata
+                Type: HTTP
+                # 该 destination 覆盖后端 OData 根路径 /sap/opu/odata/，
+                # 前端 index/manifest 中只使用相对路径 /sap/opu/odata/sap/ZSB_INBZB_O2/
+                #
+                # ★ 必须用 -api 子域（2026-10-20 实测）
+                #   UI 域  my20xxxx.s4hana.sapcloud.cn      → 只认 SAML，技术凭据一律被重定向
+                #   API 域 my20xxxx-api.s4hana.sapcloud.cn  → 正常校验 Basic/Bearer
+                URL: https://my201699-api.s4hana.sapcloud.cn/sap/opu/odata/
+                ProxyType: Internet
+                #
+                # 认证方式：Basic（已实测通过）
+                #   my201699-api + SAPTXYH + sap-client=100 → HTTP 200 真实 OData JSON
+                #   同一凭据打 my201701-api + sap-client=080 → 401（该 client 里没有此用户）
+                #
+                # ⚠️ 密码不要提交到仓库：建议在 BTP Cockpit → Connectivity → Destinations
+                #    里维护这个 destination，或用 user-provided service 注入。
+                #    若确实要写在这里，把 Password 填成通信用户的密码（用完注意轮换）。
+                Authentication: BasicAuthentication
+                User: SAPTXYH
+                Password: <在 BTP Cockpit 里填，勿写入仓库>
+                #
+                # 若要用 OAuth（改为 OAuth2SAMLBearerAssertion / OAuth2ClientCredentials）：
+                #   tokenServiceURL: https://my201699-api.s4hana.sapcloud.cn/sap/bc/sec/oauth2/token
+                #   audience:       https://my201699.s4hana.sapcloud.cn
+                #   clientKey / clientId / clientSecret：来自通信安排（不是 0M8O8G9！那是逻辑系统名）
+                #
+                # 本系统 client：通信安排在 client 100（my201699）；
+                # POC 的 client 080（my201701）里没有该通信用户。
+                URL.queries.sap-client: "100"
+                Description: "ABAP Cloud RAP OData V2 - ZSB_INBZB_O2（生产完工入库单）"

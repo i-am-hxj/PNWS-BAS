@@ -1,0 +1,28 @@
+{
+  "generationParameters": {
+    "generationDate": "Thu Nov 05 2026 03:01:19 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "https://my201701.s4hana.sapcloud.cn/sap/opu/odata4/sap/zsb_iflog_v4/srvd/sap/zsd_iflog/0001/",
+    "appName": "ziflog",
+    "appTitle": "接口日志功能",
+    "appDescription": "接口日志功能",
+    "appNamespace": "",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.148.10",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.34.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "ZC_IFLOG"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

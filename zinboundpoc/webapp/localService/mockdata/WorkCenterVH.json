@@ -1,0 +1,22 @@
+{
+	"d": {
+		"results": [
+			{
+				"WorkCenter": "WC01",
+				"WorkCenterText": "冷轧一车间"
+			},
+			{
+				"WorkCenter": "WC02",
+				"WorkCenterText": "冷轧二车间"
+			},
+			{
+				"WorkCenter": "WC03",
+				"WorkCenterText": "精整车间"
+			},
+			{
+				"WorkCenter": "WC04",
+				"WorkCenterText": "退火车间"
+			}
+		]
+	}
+}

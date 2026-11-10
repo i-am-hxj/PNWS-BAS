@@ -1,0 +1,12 @@
+# This is the resource bundle for zpoprint
+
+#Texts for manifest.json
+
+#XTIT: Application name
+appTitle=采购订单打印
+
+#YDES: Application description
+appDescription=采购订单打印
+
+#XFLD,30
+zpoprint-display.flpTitle=采购订单打印

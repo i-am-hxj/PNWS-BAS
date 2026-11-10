@@ -1,0 +1,48 @@
+{
+	"d": {
+		"results": [
+			{
+				"InboundNo": "IN202610200001",
+				"WorkOrder": "WO2026102001",
+				"WorkCenter": "WC01",
+				"ProdLine": "PL-A",
+				"Team": "T01",
+				"Warehouse": "WH01",
+				"MesNo": "MES20261020001",
+				"Remark": "首件检验合格后入库",
+				"TotalItems": 2,
+				"TotalLength": "2400.500",
+				"TotalWeight": "4750.500",
+				"CreatedBy": "DEMO01"
+			},
+			{
+				"InboundNo": "IN202610200002",
+				"WorkOrder": "WO2026102002",
+				"WorkCenter": "WC02",
+				"ProdLine": "PL-B",
+				"Team": "T02",
+				"Warehouse": "WH02",
+				"MesNo": "MES20261020002",
+				"Remark": "出口订单，需随附质保书",
+				"TotalItems": 3,
+				"TotalLength": "3600.000",
+				"TotalWeight": "7200.750",
+				"CreatedBy": "DEMO01"
+			},
+			{
+				"InboundNo": "IN202610210001",
+				"WorkOrder": "WO2026102101",
+				"WorkCenter": "WC03",
+				"ProdLine": "PL-C",
+				"Team": "T03",
+				"Warehouse": "WH01",
+				"MesNo": "MES20261021001",
+				"Remark": "",
+				"TotalItems": 3,
+				"TotalLength": "3000.000",
+				"TotalWeight": "6400.250",
+				"CreatedBy": "DEMO02"
+			}
+		]
+	}
+}
